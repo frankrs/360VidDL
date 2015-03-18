@@ -32,7 +32,7 @@ public class DownLoader : MonoBehaviour {
 		yield return www;
 		downloaded = www.isDone;
 		bytes = www.bytesDownloaded;
-		System.IO.File.WriteAllBytes(Application.persistentDataPath + "/example.mp4", www.bytes);
+		System.IO.File.WriteAllBytes("/sdcard/Oculus/360Videos/Viral3d/" + "example.mp4", www.bytes);
 	}
 
 
