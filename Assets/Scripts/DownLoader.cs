@@ -9,6 +9,7 @@ public class DownLoader : MonoBehaviour {
 	public WWW www;
 	public string url;
 	public bool downloaded;
+	public int bytes;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class DownLoader : MonoBehaviour {
 		if(GUI.Button(new Rect(0,0,100,100),"GetVid")){
 			StartCoroutine("GetVid");
 		}
+		GUI.Toggle(new Rect(0,100,100,25),downloaded,"DownLoaded");
 
 	}
 
@@ -29,7 +31,8 @@ public class DownLoader : MonoBehaviour {
 		www = new WWW(url);
 		yield return www;
 		downloaded = www.isDone;
-		System.IO.File.WriteAllBytes(Application.dataPath + "/example.mp4", www.bytes);
+		bytes = www.bytesDownloaded;
+		System.IO.File.WriteAllBytes(Application.persistentDataPath + "/example.mp4", www.bytes);
 	}
 
 
