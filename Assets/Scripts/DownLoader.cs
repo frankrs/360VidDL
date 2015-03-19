@@ -18,10 +18,10 @@ public class DownLoader : MonoBehaviour {
 
 
 	void OnGUI(){
-		if(GUI.Button(new Rect(0,0,100,100),"GetVid")){
+		if(GUI.Button(new Rect(0,0,Screen.width,Screen.height * .5f),"GetVid")){
 			StartCoroutine("GetVid");
 		}
-		GUI.Toggle(new Rect(0,100,100,25),downloaded,"DownLoaded");
+		GUI.Toggle(new Rect(0,Screen.height * .5f,Screen.width,Screen.height * .5f),downloaded,"DownLoaded");
 
 	}
 
@@ -32,7 +32,7 @@ public class DownLoader : MonoBehaviour {
 		yield return www;
 		downloaded = www.isDone;
 		bytes = www.bytesDownloaded;
-		System.IO.File.WriteAllBytes("/sdcard/Oculus/360Videos/Viral3d/" + "example.mp4", www.bytes);
+		System.IO.File.WriteAllBytes("/mnt/external_sd/" + "example.mp4", www.bytes);
 	}
 
 
